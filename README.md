@@ -1,3 +1,0 @@
-# Mi Repositorio 
-# NUMA
-

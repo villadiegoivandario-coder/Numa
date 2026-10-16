@@ -1,0 +1,331 @@
+/* src/app/pages/novedades/novedades.component.scss */
+.page-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  margin-left: 240px;
+  padding: 40px;
+  flex: 1;
+  background: url('/assets/images/numa.jpg') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.novedades-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-title {
+  color: white;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Buscador */
+.search-section {
+  margin-bottom: 30px;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 500px;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 50px;
+  font-size: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.search-input:focus {
+  box-shadow: 0 4px 20px rgba(106, 27, 154, 0.3);
+}
+
+/* Grid de empleados */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 20px;
+}
+
+/* Tarjeta de empleado */
+.empleado-card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.empleado-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.info {
+  flex: 1;
+}
+
+.info h3 {
+  margin: 0 0 5px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #4a148c;
+}
+
+.info p {
+  margin: 0;
+  font-size: 13px;
+  color: #666;
+}
+
+/* Botones de acción */
+.acciones {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn-agregar,
+.btn-ver {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 40px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-agregar {
+  background: linear-gradient(135deg, #9c27b0, #6a1b9a);
+  color: white;
+}
+
+.btn-agregar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(156, 39, 176, 0.4);
+}
+
+.btn-ver {
+  background: #038b47;
+  color: white;
+}
+
+.btn-ver:hover {
+  transform: translateY(-2px);
+  background: #1a252f;
+}
+
+/* Estados vacíos */
+.empty-state {
+  text-align: center;
+  padding: 60px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  color: #999;
+  font-size: 16px;
+}
+
+/* ============================================ */
+/* MODAL DE NOVEDADES */
+/* ============================================ */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 28px;
+  width: 90%;
+  max-width: 650px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 2px solid #e3d4ff;
+  background: white;
+}
+
+.modal-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #4a148c;
+}
+
+.btn-cerrar-modal {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 20px;
+  transition: all 0.3s;
+}
+
+.btn-cerrar-modal:hover {
+  background: #ffebee;
+  color: #c62828;
+}
+
+/* Lista de novedades */
+.novedades-lista {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.novedad-item {
+  background: #f8f5ff;
+  border-radius: 18px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  transition: all 0.3s;
+}
+
+.novedad-item:hover {
+  background: #f0eaff;
+  transform: translateX(4px);
+}
+
+.novedad-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e3d4ff;
+}
+
+.novedad-tipo {
+  font-weight: 700;
+  font-size: 14px;
+  color: #4a148c;
+}
+
+.novedad-fecha {
+  font-size: 12px;
+  color: #888;
+}
+
+.novedad-detalle {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detalle-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #555;
+}
+
+.estado-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.estado-badge.pendiente {
+  background: #fff3e0;
+  color: #ef6c00;
+}
+
+.estado-badge.aprobado {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+/* Sin novedades */
+.sin-novedades {
+  text-align: center;
+  padding: 60px 20px;
+  color: #999;
+}
+
+.sin-novedades p {
+  margin: 0;
+  font-size: 15px;
+}
+
+/* ============================================ */
+/* RESPONSIVE */
+/* ============================================ */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .empleado-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .acciones {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .btn-agregar,
+  .btn-ver {
+    padding: 8px 20px;
+  }
+
+  .modal-content {
+    width: 95%;
+    margin: 16px;
+  }
+
+  .novedad-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
